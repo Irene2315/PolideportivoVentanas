@@ -30,7 +30,7 @@ public class ControladorPrincipal implements ActionListener {
 	//Inicializa o resetea la vista de la ventana
 
 	public void inicializar() {
-		ventanaPrincipal.setTitle("Desktop");
+		ventanaPrincipal.setTitle("Principal");
 		ventanaPrincipal.setLocationRelativeTo(null);
 		ventanaPrincipal.setVisible(false);
 	}

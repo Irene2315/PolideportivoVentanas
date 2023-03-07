@@ -75,8 +75,9 @@ public class ControladorPrincipal implements ActionListener {
 			
 			ControladorInscripciones inscripcionC = new ControladorInscripciones(inscripcionM,inscripcionG);
 			
-			inscripcionG.setVisible(true);
+			
 			inscripcionC.inicializar();
+			inscripcionG.setVisible(true);
 			
 		}
 		

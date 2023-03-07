@@ -30,20 +30,20 @@ public class Principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel menuP = new JLabel("MENU POLIDEPORTIVO");
-		menuP.setBounds(129, 11, 177, 14);
+		menuP.setBounds(147, 24, 177, 14);
 		contentPane.add(menuP);
 		
 		btngestionarUsuarios = new JButton("GESTIONAR USUARIOS");
-		btngestionarUsuarios.setBounds(127, 61, 179, 23);
+		btngestionarUsuarios.setBounds(127, 61, 197, 23);
 		contentPane.add(btngestionarUsuarios);
 	
 		
 		btngestionarActividades = new JButton("GESTIONAR ACTIVIDADES");
-		btngestionarActividades.setBounds(111, 95, 195, 23);
+		btngestionarActividades.setBounds(129, 95, 195, 23);
 		contentPane.add(btngestionarActividades);
 		
 		btngestionarInscripciones = new JButton("GESTIONAR INSCRIPCIONES");
-		btngestionarInscripciones.setBounds(107, 139, 199, 23);
+		btngestionarInscripciones.setBounds(125, 139, 199, 23);
 		contentPane.add(btngestionarInscripciones);
 	}
 	

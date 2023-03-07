@@ -5,13 +5,18 @@ import vista.GestorActividades;
 
 public class ControladorActividades {
 
+	private ActividadModelo actividadM;
+	private GestorActividades actividadG;
+
 	public ControladorActividades(ActividadModelo actividadM, GestorActividades actividadG) {
-		// TODO Auto-generated constructor stub
+		this.actividadM = actividadM;
+		this.actividadG = actividadG;
 	}
 
 	public void inicializar() {
-		// TODO Auto-generated method stub
-		
+		actividadG.setTitle("Actividad");
+		actividadG.setLocationRelativeTo(null);
+		actividadG.setVisible(false);
 	}
 
 }

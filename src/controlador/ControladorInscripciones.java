@@ -7,12 +7,18 @@ public class ControladorInscripciones {
 
 	
 
+	private InscripcionModelo inscripcionM;
+	private GestorInscripciones inscripcionG;
+
 	public ControladorInscripciones(InscripcionModelo inscripcionM, GestorInscripciones inscripcionG) {
-		// TODO Auto-generated constructor stub
+		this.inscripcionM = inscripcionM;
+		this.inscripcionG = inscripcionG;
 	}
 
 	public void inicializar() {
-		// TODO Auto-generated method stub
+		inscripcionG.setTitle("Inscripciones");
+		inscripcionG.setLocationRelativeTo(null);
+		inscripcionG.setVisible(false);
 		
 	}
 

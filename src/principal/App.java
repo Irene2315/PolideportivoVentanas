@@ -7,11 +7,11 @@ public class App {
 	
 
 	public static void main(String[] args) {
-		Principal frmPrincipal = new Principal();
+		Principal principal = new Principal();
 		
-		ControladorPrincipal principalC = new ControladorPrincipal(frmPrincipal);
-		principalC.inicializar();
-		frmPrincipal.setVisible(true);
+		ControladorPrincipal cp = new ControladorPrincipal(principal);
+		cp.inicializar();
+		principal.setVisible(true);
 		
 	}
 

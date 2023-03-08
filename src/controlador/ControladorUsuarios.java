@@ -15,66 +15,75 @@ public class ControladorUsuarios implements ActionListener {
 	private UsuarioModelo usuarioM;
 	private GestorUsuarios usuarioG;
 
-    
-
-
 	public ControladorUsuarios(UsuarioModelo usuarioM, GestorUsuarios usuarioG) {
 		this.usuarioM = usuarioM;
 		this.usuarioG = usuarioG;
-		
-		//asignar escuchadores de controladores y botones
-		
+
+		// asignar escuchadores de controladores y botones
+
 		usuarioG.getBtnGuardar().addActionListener(this);
 		usuarioG.getBtnModificar().addActionListener(this);
 		usuarioG.getBtnEliminar().addActionListener(this);
 		usuarioG.getBtnLimpiar().addActionListener(this);
 	}
-	
-	
+
 	public void inicializar() {
 		usuarioG.setTitle("Usuarios");
 		usuarioG.setLocationRelativeTo(null);
 		usuarioG.setVisible(false);
-		
-	}
 
-	
-	
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == usuarioG.getBtnGuardar()) {
-			Usuario usuario;
+		if (e.getSource() == usuarioG.getBtnGuardar()) {
+			
+			Usuario usuario = new Usuario();
 			usuario = usuarioG.getDatosUsuario();
-			
-				usuarioM.conectar();
-				usuarioM.insertarUsuario(usuario);
-				JOptionPane.showMessageDialog(usuarioG, "Usuario Registrado correctamente");
-				
-				try {
-					usuarioM.cerrar();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			
+
+			usuarioM.conectar();
+			usuarioM.insertarUsuario(usuario);
+			JOptionPane.showMessageDialog(usuarioG, "Usuario Registrado correctamente");
+
+			try {
+				usuarioM.cerrar();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 		}
-		
+
 		else if (e.getSource() == usuarioG.getBtnModificar()) {
-			System.out.println("modificar");
-		}
-		else if (e.getSource() == usuarioG.getBtnEliminar()) {
+			
+			Usuario usuario = new Usuario();
+			int id;
+			id = usuarioG.getIdUsuario();
+			
+			usuarioM.conectar();
+			usuario=usuarioM.getUsuario(id);
+			
+			usuario =usuarioG.getDatosUsuario();
+			
+			usuarioM.modificarUsuario(usuario);
+			
+			JOptionPane.showMessageDialog(usuarioG, "Usuario Modificado correctamente");
+			
+			try {
+				usuarioM.cerrar();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			
+		} else if (e.getSource() == usuarioG.getBtnEliminar()) {
 			System.out.println("eliminar");
-		}
-		else if (e.getSource() == usuarioG.getBtnLimpiar()) {
+		} else if (e.getSource() == usuarioG.getBtnLimpiar()) {
 			System.out.println("limpiar");
 		}
-		
+
 	}
-
-	
-
-	
 
 }

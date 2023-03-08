@@ -177,4 +177,11 @@ public class GestorUsuarios extends JDialog {
 		
 		return usuario;
 	}
+	
+	//consigue el id del usuario que queremos buscar
+	public int getIdUsuario() {
+		int id = Integer.parseInt(IDTxt.getText());
+		
+		return id;	
+	}
 }

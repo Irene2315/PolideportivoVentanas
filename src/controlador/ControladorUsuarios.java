@@ -12,13 +12,21 @@ public class ControladorUsuarios implements ActionListener {
 	private UsuarioModelo usuarioM;
 	private GestorUsuarios usuarioG;
 
-
+    
 
 
 	public ControladorUsuarios(UsuarioModelo usuarioM, GestorUsuarios usuarioG) {
 		this.usuarioM = usuarioM;
 		this.usuarioG = usuarioG;
+		
+		//asignar escuchadores de controladores y botones
+		
+		usuarioG.getBtnGuardar().addActionListener(this);
+		usuarioG.getBtnModificar().addActionListener(this);
+		usuarioG.getBtnEliminar().addActionListener(this);
+		usuarioG.getBtnLimpiar().addActionListener(this);
 	}
+	
 	
 	public void inicializar() {
 		usuarioG.setTitle("Usuarios");
@@ -32,7 +40,19 @@ public class ControladorUsuarios implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == usuarioG.getBtnGuardar()) {
+			System.out.println("guardar");
+		}
+		
+		else if (e.getSource() == usuarioG.getBtnModificar()) {
+			System.out.println("modificar");
+		}
+		else if (e.getSource() == usuarioG.getBtnEliminar()) {
+			System.out.println("eliminar");
+		}
+		else if (e.getSource() == usuarioG.getBtnLimpiar()) {
+			System.out.println("limpiar");
+		}
 		
 	}
 

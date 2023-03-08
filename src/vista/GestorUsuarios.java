@@ -8,10 +8,24 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class GestorUsuarios extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private JTextField IDTxt;
+	private JTextField nombreApellidoTxt;
+	private JTextField DNITxt;
+	private JTextField codigoTxt;
+	
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JButton btnLimpiar;
+	private JLabel id;
+	private JLabel nombreApellido;
+	private JLabel DNI;
+	private JLabel codigo;
+	private JButton btnGuardar;
 
 	/**
 	 * Launch the application.
@@ -37,9 +51,9 @@ public class GestorUsuarios extends JDialog {
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
 		{
-			JButton btnNewButton = new JButton("New button");
-			btnNewButton.setBounds(169, 49, 89, 23);
-			contentPanel.add(btnNewButton);
+			btnGuardar = new JButton("GUARDAR");
+			btnGuardar.setBounds(305, 45, 89, 23);
+			contentPanel.add(btnGuardar);
 		}
 		{
 			JLabel gestorUsuarios = new JLabel("GESTOR USUARIOS");
@@ -47,13 +61,53 @@ public class GestorUsuarios extends JDialog {
 			contentPanel.add(gestorUsuarios);
 		}
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(169, 86, 89, 23);
-		contentPanel.add(btnNewButton_1);
+		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setBounds(293, 79, 101, 23);
+		contentPanel.add(btnModificar);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(169, 129, 89, 23);
-		contentPanel.add(btnNewButton_2);
+	    btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setBounds(305, 123, 89, 23);
+		contentPanel.add(btnEliminar);
+		
+		btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar.setBounds(305, 161, 89, 23);
+		contentPanel.add(btnLimpiar);
+		
+		id = new JLabel("ID");
+		id.setBounds(32, 54, 46, 14);
+		contentPanel.add(id);
+		
+		IDTxt = new JTextField();
+		IDTxt.setBounds(128, 51, 86, 20);
+		contentPanel.add(IDTxt);
+		IDTxt.setColumns(10);
+		
+		nombreApellido = new JLabel("NOMBRE_APELLIDO");
+		nombreApellido.setBounds(10, 94, 108, 14);
+		contentPanel.add(nombreApellido);
+		
+		nombreApellidoTxt = new JTextField();
+		nombreApellidoTxt.setBounds(128, 91, 86, 20);
+		contentPanel.add(nombreApellidoTxt);
+		nombreApellidoTxt.setColumns(10);
+		
+		DNI = new JLabel("DNI");
+		DNI.setBounds(32, 127, 46, 14);
+		contentPanel.add(DNI);
+		
+		DNITxt = new JTextField();
+		DNITxt.setBounds(128, 124, 86, 20);
+		contentPanel.add(DNITxt);
+		DNITxt.setColumns(10);
+		
+		codigo = new JLabel("CODIGO");
+		codigo.setBounds(32, 165, 46, 14);
+		contentPanel.add(codigo);
+		
+		codigoTxt = new JTextField();
+		codigoTxt.setBounds(128, 162, 86, 20);
+		contentPanel.add(codigoTxt);
+		codigoTxt.setColumns(10);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBounds(0, 228, 434, 33);
@@ -71,5 +125,37 @@ public class GestorUsuarios extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public void setBtnModificar(JButton btnModificar) {
+		this.btnModificar = btnModificar;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public void setBtnEliminar(JButton btnEliminar) {
+		this.btnEliminar = btnEliminar;
+	}
+
+	public JButton getBtnLimpiar() {
+		return btnLimpiar;
+	}
+
+	public void setBtnLimpiar(JButton btnLimpiar) {
+		this.btnLimpiar = btnLimpiar;
+	}
+
+	public JButton getBtnGuardar() {
+		return btnGuardar;
+	}
+
+	public void setBtnGuardar(JButton btnGuardar) {
+		this.btnGuardar = btnGuardar;
 	}
 }

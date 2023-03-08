@@ -2,8 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
 
+import modelo.bean.Usuario;
 import modelo.dao.UsuarioModelo;
 import vista.GestorUsuarios;
 
@@ -41,7 +44,21 @@ public class ControladorUsuarios implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == usuarioG.getBtnGuardar()) {
-			System.out.println("guardar");
+			Usuario usuario;
+			usuario = usuarioG.getDatosUsuario();
+			
+				usuarioM.conectar();
+				usuarioM.insertarUsuario(usuario);
+				JOptionPane.showMessageDialog(usuarioG, "Usuario Registrado correctamente");
+				
+				try {
+					usuarioM.cerrar();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			
 		}
 		
 		else if (e.getSource() == usuarioG.getBtnModificar()) {

@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.bean.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -157,5 +160,21 @@ public class GestorUsuarios extends JDialog {
 
 	public void setBtnGuardar(JButton btnGuardar) {
 		this.btnGuardar = btnGuardar;
+	}
+	
+	//metodos del odjeto
+	
+	//este metodo recogera los datos de usuario y devovera el odjeto
+	public Usuario getDatosUsuario() {
+		String nombre_apellido = nombreApellidoTxt.getText();
+		String dni = DNITxt.getText();
+		String codigo = codigoTxt.getText();
+		
+		Usuario usuario = new Usuario();
+		usuario.setNombreApellido(nombre_apellido);
+		usuario.setDni(dni);
+		usuario.setCodigo(codigo);
+		
+		return usuario;
 	}
 }

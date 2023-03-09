@@ -61,7 +61,7 @@ public class ControladorUsuarios implements ActionListener {
 		}
 	
 		//
-		if(e.getSource() == usuarioG.getBtnCargar()) {
+		else if (e.getSource() == usuarioG.getBtnCargar()) {
 			
 			Usuario usuario = new Usuario();
 			int id;

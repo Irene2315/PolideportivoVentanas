@@ -9,7 +9,7 @@ import modelo.bean.Usuario;
 
 public class UsuarioModelo extends Conector{
 	/* Insertar usuario */
-	public void insertarUsuario(Usuario usuario) {
+	public boolean insertarUsuario(Usuario usuario) {
 		
 
 		try {
@@ -20,10 +20,13 @@ public class UsuarioModelo extends Conector{
 			prt.setString(3, usuario.getCodigo());
 
 			prt.execute();
+			return true;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.err.println(e);
+			return false;
+			
 		}
 	}
 

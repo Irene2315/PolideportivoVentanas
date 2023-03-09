@@ -8,6 +8,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GestorActividades extends JDialog {
 
@@ -40,17 +42,21 @@ public class GestorActividades extends JDialog {
 		gestorActividades.setBounds(158, 11, 145, 14);
 		contentPanel.add(gestorActividades);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(176, 63, 89, 23);
-		contentPanel.add(btnNewButton);
+		JButton btnRegistrarA = new JButton("REGISTRAR");
+		btnRegistrarA.setBounds(298, 58, 89, 23);
+		contentPanel.add(btnRegistrarA);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(176, 110, 89, 23);
-		contentPanel.add(btnNewButton_1);
+		JButton btnCargar = new JButton("CARGAR");
+		btnCargar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCargar.setBounds(298, 92, 89, 23);
+		contentPanel.add(btnCargar);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(176, 160, 89, 23);
-		contentPanel.add(btnNewButton_2);
+		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.setBounds(298, 126, 102, 23);
+		contentPanel.add(btnModificar);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

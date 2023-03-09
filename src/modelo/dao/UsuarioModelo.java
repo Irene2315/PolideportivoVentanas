@@ -9,7 +9,7 @@ import modelo.bean.Usuario;
 
 public class UsuarioModelo extends Conector{
 	/* Insertar usuario */
-	public void insertarUsuario(Usuario usuario) {
+	public boolean insertarUsuario(Usuario usuario) {
 		
 
 		try {
@@ -20,10 +20,11 @@ public class UsuarioModelo extends Conector{
 			prt.setString(3, usuario.getCodigo());
 
 			prt.execute();
+			return true;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
+			
 		}
 	}
 
@@ -69,10 +70,15 @@ public class UsuarioModelo extends Conector{
 				usuario.setDni(resultado.getString(3));
 				usuario.setCodigo(resultado.getString(4));
 
+			}else {
+				//esa id no existe
+				return usuario=null;
 			}
-			return usuario;
+			
+			
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return usuario;

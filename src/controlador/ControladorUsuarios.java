@@ -37,6 +37,8 @@ public class ControladorUsuarios implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		//CREAR USUARIO NUEVO
 		if (e.getSource() == usuarioG.getBtnGuardar()) {
 			
 			Usuario usuario = new Usuario();
@@ -49,24 +51,30 @@ public class ControladorUsuarios implements ActionListener {
 			try {
 				usuarioM.cerrar();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
 		}
 	
+		//
 		if(e.getSource() == usuarioG.getBtnCargar()) {
 			
 			Usuario usuario = new Usuario();
 			int id;
 			id = usuarioG.getIdUsuario();
 			usuarioM.conectar();
+			
+			//TODO si id no existe que devuelba null
 			usuario= usuarioM.getUsuario(id);
-			usuarioG.cargarUsuario(usuario);
+			
+			if (usuario != null) {
+				usuarioG.cargarUsuario(usuario);
+			}else {
+				//TODO abrir mensaje de erro o aviso
+			}
 			try {
 				usuarioM.cerrar();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			

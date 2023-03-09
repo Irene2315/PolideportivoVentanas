@@ -209,6 +209,15 @@ public class GestorUsuarios extends JDialog {
 		
 		return id;	
 	}
+	
+	//limpiar la ventana
+	public void limpiar() {
+		IDTxt.setText("");
+		nombreApellidoTxt.setText("");
+		DNITxt.setText("");
+		codigoTxt.setText("");
+		
+	}
 
 	
 }

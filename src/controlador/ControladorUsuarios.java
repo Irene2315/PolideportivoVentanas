@@ -101,7 +101,6 @@ public class ControladorUsuarios implements ActionListener {
 			id = usuarioG.getIdUsuario();
 			
 			
-			
 			try {
 				usuarioM.conectar();
 				usuarioM.eliminarUsuario(id);
@@ -115,7 +114,7 @@ public class ControladorUsuarios implements ActionListener {
 			
 			
 		} else if (e.getSource() == usuarioG.getBtnLimpiar()) {
-			System.out.println("limpiar");
+			usuarioG.limpiar();
 		}
 
 	}

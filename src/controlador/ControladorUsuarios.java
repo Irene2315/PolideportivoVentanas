@@ -22,6 +22,7 @@ public class ControladorUsuarios implements ActionListener {
 		// asignar escuchadores de controladores y botones
 
 		usuarioG.getBtnGuardar().addActionListener(this);
+		usuarioG.getBtnCargar().addActionListener(this);
 		usuarioG.getBtnModificar().addActionListener(this);
 		usuarioG.getBtnEliminar().addActionListener(this);
 		usuarioG.getBtnLimpiar().addActionListener(this);
@@ -39,7 +40,7 @@ public class ControladorUsuarios implements ActionListener {
 		if (e.getSource() == usuarioG.getBtnGuardar()) {
 			
 			Usuario usuario = new Usuario();
-			usuario = usuarioG.getDatosUsuario();
+			usuario = usuarioG.getDatosUsuario(usuario);
 
 			usuarioM.conectar();
 			usuarioM.insertarUsuario(usuario);
@@ -53,6 +54,23 @@ public class ControladorUsuarios implements ActionListener {
 			}
 
 		}
+	
+		if(e.getSource() == usuarioG.getBtnCargar()) {
+			
+			Usuario usuario = new Usuario();
+			int id;
+			id = usuarioG.getIdUsuario();
+			usuarioM.conectar();
+			usuario= usuarioM.getUsuario(id);
+			usuarioG.cargarUsuario(usuario);
+			try {
+				usuarioM.cerrar();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
 
 		else if (e.getSource() == usuarioG.getBtnModificar()) {
 			
@@ -63,7 +81,7 @@ public class ControladorUsuarios implements ActionListener {
 			usuarioM.conectar();
 			usuario=usuarioM.getUsuario(id);
 			
-			usuario =usuarioG.getDatosUsuario();
+			usuario =usuarioG.getDatosUsuario(usuario);
 			
 			usuarioM.modificarUsuario(usuario);
 			
@@ -79,7 +97,23 @@ public class ControladorUsuarios implements ActionListener {
 			
 			
 		} else if (e.getSource() == usuarioG.getBtnEliminar()) {
-			System.out.println("eliminar");
+			int id;
+			id = usuarioG.getIdUsuario();
+			
+			
+			
+			try {
+				usuarioM.conectar();
+				usuarioM.eliminarUsuario(id);
+				usuarioM.cerrar();
+				
+				JOptionPane.showMessageDialog(usuarioG, "Usuario eliminado correctamente");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
 		} else if (e.getSource() == usuarioG.getBtnLimpiar()) {
 			System.out.println("limpiar");
 		}

@@ -79,6 +79,7 @@ public class UsuarioModelo extends Conector{
 
 	}
 
+	//esto modificará el usuario 
 	public void modificarUsuario(Usuario usuario) {
 		PreparedStatement prt;
 		try {
@@ -95,9 +96,30 @@ public class UsuarioModelo extends Conector{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void eliminarUsuario (int id) {
+		PreparedStatement prt;
+		
+		try {
+			prt = conexion.prepareStatement("DELETE FROM usuarios WHERE id=?");
+			
+			prt.setInt(1, id);
+			prt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		
 		
 	}
+
+	
+
+	
+
+	
 
 }

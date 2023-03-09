@@ -1,6 +1,6 @@
 package vista;
 
-import java.awt.BorderLayout;
+
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -21,14 +21,18 @@ public class GestorUsuarios extends JDialog {
 	private JTextField DNITxt;
 	private JTextField codigoTxt;
 	
+	private JButton btnRegistrar;
 	private JButton btnModificar;
+	private JButton btnCargar;
 	private JButton btnEliminar;
 	private JButton btnLimpiar;
+	
 	private JLabel id;
 	private JLabel nombreApellido;
 	private JLabel DNI;
 	private JLabel codigo;
-	private JButton btnGuardar;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -53,27 +57,33 @@ public class GestorUsuarios extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
-		{
-			btnGuardar = new JButton("GUARDAR");
-			btnGuardar.setBounds(305, 45, 89, 23);
-			contentPanel.add(btnGuardar);
-		}
+		
 		{
 			JLabel gestorUsuarios = new JLabel("GESTOR USUARIOS");
 			gestorUsuarios.setBounds(163, 11, 117, 14);
 			contentPanel.add(gestorUsuarios);
 		}
+		{
+			btnRegistrar = new JButton("REGISTRAR");
+			btnRegistrar.setBounds(305, 45, 89, 23);
+			contentPanel.add(btnRegistrar);
+		}
+		
+		btnCargar = new JButton("CARGAR");
+		btnCargar.setBounds(305, 72, 89, 23);
+		contentPanel.add(btnCargar);
+		
 		
 		btnModificar = new JButton("MODIFICAR");
-		btnModificar.setBounds(293, 79, 101, 23);
+		btnModificar.setBounds(303, 106, 101, 23);
 		contentPanel.add(btnModificar);
 		
 	    btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setBounds(305, 123, 89, 23);
+		btnEliminar.setBounds(305, 140, 89, 23);
 		contentPanel.add(btnEliminar);
 		
 		btnLimpiar = new JButton("LIMPIAR");
-		btnLimpiar.setBounds(305, 161, 89, 23);
+		btnLimpiar.setBounds(305, 174, 89, 23);
 		contentPanel.add(btnLimpiar);
 		
 		id = new JLabel("ID");
@@ -86,11 +96,11 @@ public class GestorUsuarios extends JDialog {
 		IDTxt.setColumns(10);
 		
 		nombreApellido = new JLabel("NOMBRE_APELLIDO");
-		nombreApellido.setBounds(10, 94, 108, 14);
+		nombreApellido.setBounds(10, 94, 117, 14);
 		contentPanel.add(nombreApellido);
 		
 		nombreApellidoTxt = new JTextField();
-		nombreApellidoTxt.setBounds(128, 91, 86, 20);
+		nombreApellidoTxt.setBounds(128, 91, 101, 20);
 		contentPanel.add(nombreApellidoTxt);
 		nombreApellidoTxt.setColumns(10);
 		
@@ -137,6 +147,14 @@ public class GestorUsuarios extends JDialog {
 	public void setBtnModificar(JButton btnModificar) {
 		this.btnModificar = btnModificar;
 	}
+	
+	public JButton getBtnCargar() {
+		return btnCargar;
+	}
+
+	public void setBtnCargar(JButton btnCargar) {
+		this.btnCargar = btnCargar;
+	}
 
 	public JButton getBtnEliminar() {
 		return btnEliminar;
@@ -155,27 +173,34 @@ public class GestorUsuarios extends JDialog {
 	}
 
 	public JButton getBtnGuardar() {
-		return btnGuardar;
+		return btnRegistrar;
 	}
 
 	public void setBtnGuardar(JButton btnGuardar) {
-		this.btnGuardar = btnGuardar;
+		this.btnRegistrar = btnGuardar;
 	}
 	
 	//metodos del odjeto
 	
 	//este metodo recogera los datos de usuario y devovera el odjeto
-	public Usuario getDatosUsuario() {
+	public Usuario getDatosUsuario(Usuario usuario) {
 		String nombre_apellido = nombreApellidoTxt.getText();
 		String dni = DNITxt.getText();
 		String codigo = codigoTxt.getText();
 		
-		Usuario usuario = new Usuario();
+		
 		usuario.setNombreApellido(nombre_apellido);
 		usuario.setDni(dni);
 		usuario.setCodigo(codigo);
 		
 		return usuario;
+	}
+	public void cargarUsuario(Usuario usuario) {
+		
+		nombreApellidoTxt.setText(usuario.getNombreApellido());
+		DNITxt.setText(usuario.getDni());
+		codigoTxt.setText(usuario.getCodigo());
+		
 	}
 	
 	//consigue el id del usuario que queremos buscar
@@ -184,4 +209,6 @@ public class GestorUsuarios extends JDialog {
 		
 		return id;	
 	}
+
+	
 }

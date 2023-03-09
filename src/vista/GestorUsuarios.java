@@ -220,9 +220,7 @@ public class GestorUsuarios extends JDialog {
 		
 	}
 
-	public void mostrarMensaje() {
-		JOptionPane.sh
-	}
+	
 
 	
 }

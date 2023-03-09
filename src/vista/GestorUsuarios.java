@@ -11,7 +11,8 @@ import javax.swing.border.EmptyBorder;
 import modelo.bean.Usuario;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
+
 import javax.swing.JTextField;
 
 public class GestorUsuarios extends JDialog {
@@ -173,7 +174,7 @@ public class GestorUsuarios extends JDialog {
 		this.btnLimpiar = btnLimpiar;
 	}
 
-	public JButton getBtnGuardar() {
+	public JButton getBtnRegistrar() {
 		return btnRegistrar;
 	}
 

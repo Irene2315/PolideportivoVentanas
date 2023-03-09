@@ -21,7 +21,7 @@ public class ControladorUsuarios implements ActionListener {
 
 		// asignar escuchadores de controladores y botones
 
-		usuarioG.getBtnGuardar().addActionListener(this);
+		usuarioG.getBtnRegistrar().addActionListener(this);
 		usuarioG.getBtnCargar().addActionListener(this);
 		usuarioG.getBtnModificar().addActionListener(this);
 		usuarioG.getBtnEliminar().addActionListener(this);
@@ -39,15 +39,19 @@ public class ControladorUsuarios implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		//CREAR USUARIO NUEVO
-		if (e.getSource() == usuarioG.getBtnGuardar()) {
+		if (e.getSource() == usuarioG.getBtnRegistrar()) {
 			
 			Usuario usuario = new Usuario();
 			usuario = usuarioG.getDatosUsuario(usuario);
 
 			usuarioM.conectar();
-			usuarioM.insertarUsuario(usuario);
-			JOptionPane.showMessageDialog(usuarioG, "Usuario Registrado correctamente");
-
+			if(usuarioM.insertarUsuario(usuario)) {
+				JOptionPane.showMessageDialog(usuarioG, "Usuario Registrado correctamente");
+				usuarioG.limpiar();
+			}
+			else {
+				JOptionPane.showMessageDialog(usuarioG, "Este usuario ya esta registrado");
+			}
 			try {
 				usuarioM.cerrar();
 			} catch (SQLException e1) {
@@ -67,10 +71,10 @@ public class ControladorUsuarios implements ActionListener {
 			//TODO si id no existe que devuelba null
 			usuario= usuarioM.getUsuario(id);
 			
-			if (usuario != null) {
-				usuarioG.cargarUsuario(usuario);
+			if (usuario == null) {
+				JOptionPane.showMessageDialog(usuarioG, "Usuario no registrado");
 			}else {
-				//TODO abrir mensaje de erro o aviso
+				usuarioG.cargarUsuario(usuario);
 			}
 			try {
 				usuarioM.cerrar();
@@ -93,7 +97,10 @@ public class ControladorUsuarios implements ActionListener {
 			
 			usuarioM.modificarUsuario(usuario);
 			
+			
+			
 			JOptionPane.showMessageDialog(usuarioG, "Usuario Modificado correctamente");
+			usuarioG.limpiar();
 			
 			try {
 				usuarioM.cerrar();
@@ -115,6 +122,7 @@ public class ControladorUsuarios implements ActionListener {
 				usuarioM.cerrar();
 				
 				JOptionPane.showMessageDialog(usuarioG, "Usuario eliminado correctamente");
+				usuarioG.limpiar();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

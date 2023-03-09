@@ -23,8 +23,6 @@ public class UsuarioModelo extends Conector{
 			return true;
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.err.println(e);
 			return false;
 			
 		}
@@ -72,10 +70,15 @@ public class UsuarioModelo extends Conector{
 				usuario.setDni(resultado.getString(3));
 				usuario.setCodigo(resultado.getString(4));
 
+			}else {
+				//esa id no existe
+				return usuario=null;
 			}
-			return usuario;
+			
+			
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return usuario;

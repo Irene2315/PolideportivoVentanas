@@ -2,9 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
 
-
+import modelo.bean.Actividad;
 import modelo.dao.ActividadModelo;
 import vista.GestorActividades;
 
@@ -37,7 +39,24 @@ public class ControladorActividades implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == actividadG.getBtnRegistrar()) {
-			System.out.println("registrar");
+			Actividad actividad = new Actividad();
+			actividad = actividadG.getDatosActividad(actividad);
+			
+			actividadM.conectar();
+			if(actividadM.insertarActividad(actividad)) {
+				JOptionPane.showMessageDialog(actividadG, "Actividad registrada correctamente");
+				actividadG.limpiar();
+			}
+			else {
+				JOptionPane.showMessageDialog(actividadG, "Esta actividad ya se ha registrado");
+			}
+			try {
+				actividadM.cerrar();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 		
 		else if(e.getSource() == actividadG.getBtnCargar()) {
